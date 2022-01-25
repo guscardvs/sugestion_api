@@ -13,9 +13,7 @@ class IdMixin(BaseModel):
 
     @validator("id", always=True, pre=True)
     def validate_id(cls, value):
-        if value:
-            return value
-        return str(uuid4())
+        return value or str(uuid4())
 
 class RWMixin(BaseModel):
     class Config:

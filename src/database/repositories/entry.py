@@ -24,8 +24,7 @@ class EntryRepository(Repository):
         ).order_by(lambda e_id, cte: desc(cte))
 
     def get_most_suggested(self, user_id: str) -> str:
-        entry_id = self._order_entry_by_popularity(user_id)[:][0][0]
-        return entry_id
+        return self._order_entry_by_popularity(user_id)[:][0][0]
 
     def get_top_suggestions(self, user_id: str) -> list[str]:
         entry_ids = self._order_entry_by_popularity(user_id)[:5]

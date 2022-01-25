@@ -18,8 +18,7 @@ class UserRepository(Repository):
         return user
 
     def get_db(self, id: UUID4) -> User:
-        db_user = User.get(id=id)
-        if db_user:
+        if db_user := User.get(id=id):
             return db_user
         raise HTTPException(404, detail="User not found")
 
